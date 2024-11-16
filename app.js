@@ -1,10 +1,18 @@
-let taskList = [];
+let taskList;
+let localTasks = JSON.parse(localStorage.getItem("todoList"));
+console.log(localTasks);
+if (localTasks) {
+  taskList = localTasks;
+} else {
+  taskList = [];
+}
 const input = document.querySelector(".input_task");
 const add_btn = document.querySelector(".add_task");
-
 const edit_btn = document.querySelector(".edit_btn");
 const delete_btn = document.querySelector(".delete_btn");
 
+
+updateTasks();
 function saveTasks() {
   localStorage.setItem("todoList", JSON.stringify(taskList));
 }
